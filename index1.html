@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawan Aksi - Gerakan Anti Korupsi Anak Muda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #FF6B35;
+            --teal: #4ECDC4;
+            --yellow: #FFD166;
+            --mint: #06D6A0;
+            --purple: #9B5DE5;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Header & Navigasi */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Righteous', cursive;
+            font-size: 1.8rem;
+            color: var(--orange);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--purple);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--purple);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--purple);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .action-btn {
+            background: var(--orange);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            background: var(--purple);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(155, 93, 229, 0.4);
+        }
+        
+        .action-btn:hover:after {
+            width: 0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .changing-text {
+            color: var(--purple);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .changing-text:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: var(--yellow);
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #444;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .primary-btn {
+            background: var(--purple);
+            color: white;
+            box-shadow: 0 5px 15px rgba(155, 93, 229, 0.4);
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(155, 93, 229, 0.6);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--dark);
+        }
+        
+        .secondary-btn:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            max-width: 700px;
+            z-index: 1;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }    
+        }
+        
+        /* Nilai Antikorupsi Section */
+        .values-section {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--orange);
+            border-radius: 3px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .value-icon {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-icon:before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--purple), var(--teal));
+            transform: rotate(45deg);
+        }
+        
+        .value-content {
+            padding: 25px;
+        }
+        
+        .value-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .value-content p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* Fitur Section */
+        .features-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .feature-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .feature-cards {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            min-width: 300px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--purple);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: #555;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--purple), var(--teal));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,100 100,0 100,100" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-btn {
+            background: var(--yellow);
+            color: var(--dark);
+            font-weight: 700;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--orange);
+            border-radius: 3px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--teal);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--purple);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Animasi */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-image {
+                opacity: 0.3;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigasi -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-hands-helping"></i>
+                    Kawan Aksi
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#">Nilai Anti Korupsi</a></li>
+                    <li><a href="#">Edukasi</a></li>
+                    <li><a href="#">Komunitas</a></li>
+                    <li><a href="#">Event</a></li>
+                    <li><a href="#" class="action-btn">Gabung Sekarang</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bersama Kita Bangun Indonesia <span class="changing-text">Bebas Korupsi</span></h1>
+                <p>Komunitas anak muda yang berkomitmen untuk memerangi korupsi melalui edukasi, kolaborasi, dan aksi nyata berdasarkan 9 nilai antikorupsi.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn primary-btn">Gabung Komunitas</a>
+                    <a href="#" class="btn secondary-btn">Pelajari Nilai</a>
+                </div>
+            </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop" alt="Youth Community" class="hero-image floating">
+    </section>
+
+    <!-- Nilai Antikorupsi Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>9 Nilai Anti Korupsi</h2>
+                <p>Yuk kenali dan terapkan nilai-nilai dasar yang menjadi senjata kita melawan korupsi</p>
+            </div>
+            
+            <div class="values-grid">
+                <!-- Card Nilai 1 -->
+                <div class="value-card animate delay-1">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="value-content">
+                        <h3>Kejujuran</h3>
+                        <p>Bersikap benar dan transparan dalam setiap tindakan, serta tidak melakukan kecurangan.</p>
+                    </div>
+                </div>
+                
+                <!-- Card Nilai 2 -->
+                <div class="value-card animate delay-1">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="value-content">
+                        <h3>Kepedulian</h3>
+                        <p>Memiliki perhatian terhadap sesama dan lingkungan sekitar, serta berani melaporkan tindakan korupsi.</p>
+                    </div>
+                </div>
+                
+                <!-- Card Nilai 3 -->
+                <div class="value-card animate delay-2">
+                    <div class="value-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="value-content">
+                        <h3>Keberanian</h3>
+                        <p>Berani menolak dan melawan praktik korupsi dalam bentuk apapun, meski menghadapi tekanan.</p>
+                    </div>
+                </div>
+                
+                <!-- Card Nilai 4 -->
+                <div class="value-card animate delay-2">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="value-content">
+                        <h3>Keadilan</h3>
+                        <p>Memberikan perlakuan yang sama kepada semua pihak tanpa memandang status atau kedudukan.</p>
+                    </div>
+                </div>
+                
+                <!-- Card Nilai 5 -->
+                <div class="value-card animate delay-3">
+                    <div class="value-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="value-content">
+                        <h3>Kerjasama</h3>
+                        <p>Bersinergi dengan berbagai pihak untuk menciptakan lingkungan yang bebas dari korupsi.</p>
+                    </div>
+                </div>
+                
+                <!-- Card Nilai 6 -->
+                <div class="value-card animate delay-3">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="value-content">
+                        <h3>Tanggung Jawab</h3>
+                        <p>Menyadari konsekuensi dari setiap tindakan dan siap mempertanggungjawabkannya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitur Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Apa yang Kami Tawarkan</h2>
+                <p>Bergabunglah dengan komunitas kami dan dapatkan berbagai manfaat edukasi dan kolaborasi</p>
+            </div>
+            
+            <div class="features-container">
+                <div class="feature-text animate">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ruang Edukasi & Interaksi Anti Korupsi</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Kawan Aksi menyediakan berbagai platform untuk meningkatkan kesadaran dan pengetahuan tentang pencegahan korupsi melalui konten kreatif dan interaktif.</p>
+                    <p style="font-size: 1.2rem;">Kami percaya bahwa perubahan dimulai dari pemahaman dan aksi kolektif. Mari bersama-sama membangun budaya anti korupsi di kalangan generasi muda!</p>
+                    <a href="#" class="btn primary-btn" style="margin-top: 30px;">Jelajahi Konten</a>
+                </div>
+                
+                <div class="feature-cards">
+                    <!-- Fitur 1 -->
+                    <div class="feature-card animate delay-1">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Game Edukatif</h3>
+                        <p>Belajar nilai anti korupsi melalui game interaktif yang seru dan menarik.</p>
+                    </div>
+                    
+                    <!-- Fitur 2 -->
+                    <div class="feature-card animate delay-2">
+                        <i class="fas fa-podcast"></i>
+                        <h3>Podcast & Video</h3>
+                        <p>Konten audio dan visual tentang isu korupsi terkini dan cara melawannya.</p>
+                    </div>
+                    
+                    <!-- Fitur 3 -->
+                    <div class="feature-card animate delay-1">
+                        <i class="fas fa-users"></i>
+                        <h3>Forum Diskusi</h3>
+                        <p>Diskusi interaktif dengan pakar dan sesama anak muda peduli anti korupsi.</p>
+                    </div>
+                    
+                    <!-- Fitur 4 -->
+                    <div class="feature-card animate delay-2">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Event & Workshop</h3>
+                        <p>Kegiatan offline dan online untuk meningkatkan kapasitas anggota komunitas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Siap Jadi Bagian dari Perubahan?</h2>
+                <p>Bergabunglah dengan ribuan anak muda lainnya yang sudah berkomitmen untuk melawan korupsi di Indonesia. Bersama kita bisa ciptakan masa depan yang lebih baik!</p>
+                <a href="#" class="btn cta-btn">Daftar Sekarang Gratis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Kawan Aksi</h3>
+                    <p>Komunitas anak muda yang berdedikasi untuk memerangi korupsi melalui edukasi, kolaborasi, dan aksi nyata.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navigasi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Nilai Anti Korupsi</a></li>
+                        <li><a href="#">Konten Edukasi</a></li>
+                        <li><a href="#">Komunitas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@kawanaksi.id</li>
+                        <li><i class="fas fa-phone"></i> +62 21 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Kawan Aksi. All rights reserved. Gerakan Anak Muda Melawan Korupsi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animasi saat scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.animate');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Panggil saat load dan scroll
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+            
+            // Animasi teks berubah di hero section
+            const changingText = document.querySelector('.changing-text');
+            const texts = ["Bebas Korupsi", "Lebih Transparan", "Berintegritas"];
+            let currentIndex = 0;
+            
+            setInterval(() => {
+                changingText.style.opacity = 0;
+                
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % texts.length;
+                    changingText.textContent = texts[currentIndex];
+                    changingText.style.opacity = 1;
+                }, 500);
+            }, 3000);
+            
+            // Efek hover card lebih dinamis
+            const cards = document.querySelectorAll('.value-card, .feature-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
